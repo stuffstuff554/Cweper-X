@@ -16,11 +16,31 @@ CORS(app)
 
 SaveAccountPath = "Users/"
 
+ToReturn = ""
+
 @app.route('/Pro', methods=['POST'])
 def Pro():
     data = request.get_json()
 
-    if data["MSG"] == "Email":
+    if data["MSG"] == "Account+":
+        print("Account request, " + str(data))
+
+        if os.path.exists(SaveAccountPath + data["Username"]):
+            print("Account request, " + str(data) + ". Already Exsits!")
+
+            ToReturn = "AE"
+        else:
+            os.mkdir(SaveAccountPath + data["Username"])
+
+            TempJSON = {
+                "Username" : data["Username"],
+                "Password" : data["Password"],
+                "Coin" : 15,
+                "Admin" : True # Once released change to False.
+            }
+            
+            open(SaveAccountPath + data["Username"] + "info.json").write(json.dump(TempJSON))
+    elif data["MSG"] == "Email":
         PathToUser = SaveAccountPath + data["To"] + "/mail.txt"
 
         if os.path.exists(PathToUser):

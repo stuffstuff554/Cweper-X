@@ -4,14 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cweper X - Landing</title>
+    <link rel="icon" href="Data/IMG/favicon.png">
 </head>
 <body>
-    <h1>Welcome to Cweper X</h1><br><br><br>
+    <h1>Welcome to Cweper X <img src="Data/IMG/favicon.png"></h1><br><br><br>
     <h3>List of operations</h3><br>
     <ol>
-        <li><button>Cotinue as Guest</button></li>
+        <li><button onclick="g()">Cotinue as Guest</button></li>
         <li><button>Login</button></li>
         <li><button>Register</button></li>
     </ol>
 </body>
 </html>
+
+<script>
+    function g() {
+        localStorage.setItem("Username", "g");
+
+        window.location.href = "Data/home.html";
+    }
+</script>

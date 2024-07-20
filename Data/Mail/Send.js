@@ -1,4 +1,12 @@
 function Send() {
+    if (localStorage.getItem("Username") == "G") {
+        alert("Create a free account to mail people!");
+    } else {
+        ASend();
+    }
+}
+
+function ASend() {
     var textboxValue = document.getElementById("ToSend").value;
     var SendTo = prompt("Enter the username of the person you would like to send this message to.");
     var Topic = prompt("Whats the topic?");
@@ -36,4 +44,6 @@ function Send() {
         console.error('Error:', error);
         alert("There was an error communicating with the server.");
     });
+
+    window.location.href = "home.html"
 }
