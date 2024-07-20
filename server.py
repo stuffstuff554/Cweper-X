@@ -48,7 +48,11 @@ def Pro():
             open(PathToUser, "w").write(data["Context"] + "\n\n" + data["Content"])
         else:
             open(PathToUser, "w").write(data["Context"] + "\n\n" + data["Content"])
-
+    elif data["MSG"] == "Echeck":
+        if os.path.exists(SaveAccountPath + data["Username"] + "/mail.txt"):
+            ToReturn = {"response" : open(SaveAccountPath + data["Username"] + "/mail.txt").read()}
+        else:
+            ToReturn = "NE"
 
 if __name__ == '__main__':
     app.run(debug=True, host = "0.0.0.0", port = 2080)
